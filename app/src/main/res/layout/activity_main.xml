@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/default_async_button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/default_launch_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Default launch" />
+
+    <Button
+        app:layout_constraintStart_toEndOf="@+id/default_launch_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/default_launch_button"
+        android:id="@+id/default_async_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Default async" />
+
+    <Button
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/async_exception_button"
+        app:layout_constraintTop_toBottomOf="@+id/default_launch_button"
+        android:id="@+id/launch_exception_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Launch with exception" />
+
+    <Button
+        app:layout_constraintStart_toEndOf="@+id/launch_exception_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/launch_exception_button"
+        android:id="@+id/async_exception_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Async with exception" />
+
+    <Button
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/launch_exception_button"
+        android:id="@+id/unconfined_launch_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Unconfined launch" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
