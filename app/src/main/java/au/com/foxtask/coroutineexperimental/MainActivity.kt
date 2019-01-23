@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         same_load_data_from_backend_with_context_swap.setOnClickListener { sameLoadingDataFromBackendWithContextSwap() }
         load_data_from_two_apis.setOnClickListener { loadDataFromTwoApis() }
         load_data_timeout.setOnClickListener { loadDataTimeout() }
+        catalogue_example.setOnClickListener { launchCatalogueExample() }
     }
 
     fun defaultLaunch() {
@@ -204,5 +205,9 @@ class MainActivity : AppCompatActivity() {
 
             load_data_timeout.text = "Got result $res"
         }
+    }
+
+    fun launchCatalogueExample() {
+        CatalogueActivity.launch(this)
     }
 }

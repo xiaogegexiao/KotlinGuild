@@ -141,4 +141,13 @@
         android:layout_height="wrap_content"
         android:text="Load data timeout"/>
 
+    <Button
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/load_data_timeout"
+        android:id="@+id/catalogue_example"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Catalogue example"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

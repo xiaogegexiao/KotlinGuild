@@ -1,13 +1,14 @@
 package au.com.foxtask.coroutineexperimental.base
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import au.com.foxtask.coroutineexperimental.Failure
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel(application: Application) : AndroidViewModel(application) {
 
     var failureLiveData: MutableLiveData<Failure> = MutableLiveData()
 
