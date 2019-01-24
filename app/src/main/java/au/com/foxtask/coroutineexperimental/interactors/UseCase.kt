@@ -1,7 +1,7 @@
 package au.com.foxtask.coroutineexperimental.interactors
 
-import au.com.foxtask.coroutineexperimental.Either
-import au.com.foxtask.coroutineexperimental.Failure
+import au.com.foxtask.coroutineexperimental.base.Either
+import au.com.foxtask.coroutineexperimental.base.Failure
 import kotlinx.coroutines.*
 
 abstract class UseCase<out Type, in Params> {

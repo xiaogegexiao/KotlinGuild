@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
     val unconfinedScope = CoroutineScope(Dispatchers.Unconfined)
 
     val uiScopeWithExceptionHandler = uiScope + CoroutineExceptionHandler { coroutineContext, throwable ->
-        toast("catch exception ${throwable.message}")
+        toast("catch exception ${throwable.message} by ui scope exception handler")
     }
     val defaultScopeWithExceptionHandler = defaultScope + CoroutineExceptionHandler { coroutineContext, throwable ->
-        toast("catch exception ${throwable.message}")
+        toast("catch exception ${throwable.message} by default scope exception handler")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         same_load_data_from_backend_with_context_swap.setOnClickListener { sameLoadingDataFromBackendWithContextSwap() }
         load_data_from_two_apis.setOnClickListener { loadDataFromTwoApis() }
         load_data_timeout.setOnClickListener { loadDataTimeout() }
+        handle_exception_by_try_catch.setOnClickListener { handleExceptionByTryCatch() }
+        handle_exception_by_async.setOnClickListener { handleExceptionByAsync() }
+        handle_exception_by_exception_handler.setOnClickListener { handleExceptionByExceptionHandler() }
         catalogue_example.setOnClickListener { launchCatalogueExample() }
     }
 
@@ -204,6 +207,39 @@ class MainActivity : AppCompatActivity() {
             }
 
             load_data_timeout.text = "Got result $res"
+        }
+    }
+
+    fun handleExceptionByTryCatch() {
+        uiScope.launch {
+            try {
+                withContext(Dispatchers.Default) {
+                    throw RuntimeException("fake runtime exception")
+                }
+            } catch (exception: Exception) {
+                toast("Got exception ${exception.message} by try-catch")
+            }
+        }
+    }
+
+    fun handleExceptionByAsync() {
+        uiScope.launch {
+            val deferred = defaultScope.async<String> {
+                throw RuntimeException("fake runtime exception")
+//                "hello world"
+            }
+            deferred.join()
+            deferred.getCompletionExceptionOrNull()?.let {
+                toast("Got exception ${it.message} from async result")
+            } ?: run {
+                toast("Got result ${deferred.await()}")
+            }
+        }
+    }
+
+    fun handleExceptionByExceptionHandler() {
+        uiScopeWithExceptionHandler.launch {
+            throw RuntimeException("fake runtime exception")
         }
     }
 

@@ -1,153 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".MainActivity">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/default_async_button"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/default_launch_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Default launch"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        app:layout_constraintStart_toEndOf="@+id/default_launch_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/default_launch_button"
-        android:id="@+id/default_async_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Default async"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/default_async_button"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/default_launch_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Default launch"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/async_exception_button"
-        app:layout_constraintTop_toBottomOf="@+id/default_launch_button"
-        android:id="@+id/launch_exception_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Launch with exception"/>
+        <Button
+            app:layout_constraintStart_toEndOf="@+id/default_launch_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/default_launch_button"
+            android:id="@+id/default_async_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Default async"/>
 
-    <Button
-        app:layout_constraintStart_toEndOf="@+id/launch_exception_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/launch_exception_button"
-        android:id="@+id/async_exception_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Async with exception"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/async_exception_button"
+            app:layout_constraintTop_toBottomOf="@+id/default_launch_button"
+            android:id="@+id/launch_exception_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Launch with exception"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/launch_exception_button"
-        android:id="@+id/unconfined_launch_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Unconfined launch"/>
+        <Button
+            app:layout_constraintStart_toEndOf="@+id/launch_exception_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/launch_exception_button"
+            android:id="@+id/async_exception_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Async with exception"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unconfined_launch_button"
-        android:id="@+id/cancel_job"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Cancel job"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/launch_exception_button"
+            android:id="@+id/unconfined_launch_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Unconfined launch"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancel_job"
-        android:id="@+id/cancel_subjobs_before_finishing"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Cancel sub-jobs before finishing"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/unconfined_launch_button"
+            android:id="@+id/cancel_job"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel job"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancel_subjobs_before_finishing"
-        android:id="@+id/load_data_from_backend"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Load data from backend"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancel_job"
+            android:id="@+id/cancel_subjobs_before_finishing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel sub-jobs before finishing"/>
 
-    <ProgressBar
-        app:layout_constraintTop_toTopOf="@+id/load_data_from_backend"
-        app:layout_constraintEnd_toEndOf="@+id/load_data_from_backend"
-        app:layout_constraintBottom_toBottomOf="@+id/load_data_from_backend"
-        app:layout_constraintDimensionRatio="W, 1:1"
-        android:layout_margin="5dp"
-        android:id="@+id/load_data_from_backend_progress_bar"
-        android:elevation="2dp"
-        android:visibility="gone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cancel_subjobs_before_finishing"
+            android:id="@+id/load_data_from_backend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Load data from backend"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/load_data_from_backend"
-        android:id="@+id/same_load_data_from_backend_with_context_swap"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Same load data from backend with context swap"/>
+        <ProgressBar
+            app:layout_constraintTop_toTopOf="@+id/load_data_from_backend"
+            app:layout_constraintEnd_toEndOf="@+id/load_data_from_backend"
+            app:layout_constraintBottom_toBottomOf="@+id/load_data_from_backend"
+            app:layout_constraintDimensionRatio="W, 1:1"
+            android:layout_margin="5dp"
+            android:id="@+id/load_data_from_backend_progress_bar"
+            android:elevation="2dp"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
 
-    <ProgressBar
-        app:layout_constraintTop_toTopOf="@+id/same_load_data_from_backend_with_context_swap"
-        app:layout_constraintEnd_toEndOf="@+id/same_load_data_from_backend_with_context_swap"
-        app:layout_constraintBottom_toBottomOf="@+id/same_load_data_from_backend_with_context_swap"
-        app:layout_constraintDimensionRatio="W, 1:1"
-        android:layout_margin="5dp"
-        android:id="@+id/same_load_data_from_backend_with_context_swap_progress_bar"
-        android:elevation="2dp"
-        android:visibility="gone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/load_data_from_backend"
+            android:id="@+id/same_load_data_from_backend_with_context_swap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Same load data from backend with context swap"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/same_load_data_from_backend_with_context_swap"
-        android:id="@+id/load_data_from_two_apis"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Load data from two apis"/>
+        <ProgressBar
+            app:layout_constraintTop_toTopOf="@+id/same_load_data_from_backend_with_context_swap"
+            app:layout_constraintEnd_toEndOf="@+id/same_load_data_from_backend_with_context_swap"
+            app:layout_constraintBottom_toBottomOf="@+id/same_load_data_from_backend_with_context_swap"
+            app:layout_constraintDimensionRatio="W, 1:1"
+            android:layout_margin="5dp"
+            android:id="@+id/same_load_data_from_backend_with_context_swap_progress_bar"
+            android:elevation="2dp"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
 
-    <ProgressBar
-        app:layout_constraintTop_toTopOf="@+id/load_data_from_two_apis"
-        app:layout_constraintEnd_toEndOf="@+id/load_data_from_two_apis"
-        app:layout_constraintBottom_toBottomOf="@+id/load_data_from_two_apis"
-        app:layout_constraintDimensionRatio="W, 1:1"
-        android:layout_margin="5dp"
-        android:id="@+id/load_data_from_two_apis_progress_bar"
-        android:elevation="2dp"
-        android:visibility="gone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/same_load_data_from_backend_with_context_swap"
+            android:id="@+id/load_data_from_two_apis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Load data from two apis"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/load_data_from_two_apis"
-        android:id="@+id/load_data_timeout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Load data timeout"/>
+        <ProgressBar
+            app:layout_constraintTop_toTopOf="@+id/load_data_from_two_apis"
+            app:layout_constraintEnd_toEndOf="@+id/load_data_from_two_apis"
+            app:layout_constraintBottom_toBottomOf="@+id/load_data_from_two_apis"
+            app:layout_constraintDimensionRatio="W, 1:1"
+            android:layout_margin="5dp"
+            android:id="@+id/load_data_from_two_apis_progress_bar"
+            android:elevation="2dp"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
 
-    <Button
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/load_data_timeout"
-        android:id="@+id/catalogue_example"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Catalogue example"/>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/load_data_from_two_apis"
+            android:id="@+id/load_data_timeout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Load data timeout"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/load_data_timeout"
+            android:id="@+id/handle_exception_by_try_catch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Handle exception by try catch"/>
+
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/handle_exception_by_try_catch"
+            android:id="@+id/handle_exception_by_async"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Handle exception by async"/>
+
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/handle_exception_by_async"
+            android:id="@+id/handle_exception_by_exception_handler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Handle exception by exception handler"/>
+
+        <Button
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/handle_exception_by_exception_handler"
+            android:id="@+id/catalogue_example"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Catalogue example"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

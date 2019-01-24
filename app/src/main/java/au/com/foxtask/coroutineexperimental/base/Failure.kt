@@ -1,4 +1,4 @@
-package au.com.foxtask.coroutineexperimental
+package au.com.foxtask.coroutineexperimental.base
 
 /**
  * Base Class for handling errors/failures/exceptions.
