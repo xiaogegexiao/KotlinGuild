@@ -1,6 +1,9 @@
 package au.com.foxtask.coroutineexperimental
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +11,9 @@ import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import au.com.foxtask.coroutineexperimental.models.CataloguePageEntityWrapper
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.layout_catalogue_page.view.*
+import java.lang.Exception
 
 
 class CataloguePagerAdapter(private val context: Context) : PagerAdapter() {

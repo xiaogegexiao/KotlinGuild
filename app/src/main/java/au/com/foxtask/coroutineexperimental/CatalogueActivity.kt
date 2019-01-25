@@ -38,7 +38,7 @@ class CatalogueActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, S
 
     override fun onResume() {
         super.onResume()
-        viewModel.getCatalogue("4785", "26116")
+        viewModel.getCatalogue("17729", "26116")
     }
 
     private fun listenToCatalogueUpdates() {
