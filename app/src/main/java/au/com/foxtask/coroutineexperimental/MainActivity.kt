@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         uiScope.launch {
             val job = defaultScope.launch {
                 // massive computation
-                delay(3000)
+                delay(300)
                 log("finished job")
             }
             delay(1000)
@@ -225,8 +225,8 @@ class MainActivity : AppCompatActivity() {
     fun handleExceptionByAsync() {
         uiScope.launch {
             val deferred = defaultScope.async<String> {
-                throw RuntimeException("fake runtime exception")
-//                "hello world"
+//                throw RuntimeException("fake runtime exception")
+                "hello world"
             }
             deferred.join()
             deferred.getCompletionExceptionOrNull()?.let {

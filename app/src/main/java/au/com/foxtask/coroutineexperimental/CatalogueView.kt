@@ -18,24 +18,38 @@ class CatalogueView @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        requestLayout()
+        Log.d(CatalogueView::class.java.simpleName, "new width: $w, height: $h, old width: $oldw, old height: $oldh")
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val widthSize = MeasureSpec.getSize(widthMeasureSpec)
+        val heightSize = MeasureSpec.getSize(heightMeasureSpec)
+        if (originHeight == 0f || originWidth == 0f || widthSize == 0 || heightSize == 0) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+            return
+        }
+        if (widthSize / heightSize > originWidth / originHeight) {
+            setMeasuredDimension((originWidth / originHeight * height).toInt(), heightSize)
+        } else {
+            setMeasuredDimension(widthSize, (originHeight / originWidth * width).toInt())
+        }
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         if (childCount <= 0) {
             return
         }
-        Log.d("CatalogueView", "changed $changed, l $l, t $t, r $r, b $b")
+        Log.d(CatalogueView::class.java.simpleName, "current ratio is ${(r - l).toFloat() / (b - t).toFloat()} while origin ratio is ${originWidth / originHeight}")
         rectList?.let { list ->
             val width = (r - l).toDouble()
             val height = (b - t).toDouble()
-            for (i in 0 until childCount) {
+            for (i in 1 until childCount - 1) {
                 val child = getChildAt(i)
                 child.layout(
-                    (width / originWidth * list[i].left.toFloat()).toInt(),
-                    (height / originHeight * list[i].top.toFloat()).toInt(),
-                    (width / originWidth * list[i].right.toFloat()).toInt(),
-                    (height / originHeight * list[i].bottom.toFloat()).toInt()
+                    Math.ceil(width / originWidth * list[i].left.toDouble()).toInt(),
+                    Math.ceil(height / originHeight * list[i].top.toDouble()).toInt(),
+                    Math.ceil(width / originWidth * list[i].right.toDouble()).toInt(),
+                    Math.ceil(height / originHeight * list[i].bottom.toDouble()).toInt()
                 )
             }
         }
@@ -46,6 +60,8 @@ class CatalogueView @JvmOverloads constructor(
         originWidth = width
         originHeight = height
         removeAllViews()
+
+        LayoutInflater.from(context).inflate(R.layout.item_catalogue_image, this)
         for (rect in rects) {
             LayoutInflater.from(context).inflate(R.layout.item_catalogue_button, this)
         }

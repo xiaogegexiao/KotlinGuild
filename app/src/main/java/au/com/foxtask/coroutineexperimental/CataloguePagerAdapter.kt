@@ -1,18 +1,14 @@
 package au.com.foxtask.coroutineexperimental
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import au.com.foxtask.coroutineexperimental.models.CataloguePageEntityWrapper
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.layout_catalogue_page.view.*
-import java.lang.Exception
 
 
 class CataloguePagerAdapter(private val context: Context) : PagerAdapter() {
@@ -34,17 +30,7 @@ class CataloguePagerAdapter(private val context: Context) : PagerAdapter() {
                 item.pageImageWidth.toFloat(),
                 item.pageImageHeight.toFloat()
             )
-            picasso.load(item.pageImageLink).tag(item.pageImageLink).into(object: Target {
-                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
-                }
-
-                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
-                }
-
-                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                    layout.catalogue_view.background = BitmapDrawable(context.resources, bitmap)
-                }
-            })
+            picasso.load(item.pageImageLink).tag(item.pageImageLink).into(layout.catalogue_view.getChildAt(0) as ImageView)
         }
     }
 
