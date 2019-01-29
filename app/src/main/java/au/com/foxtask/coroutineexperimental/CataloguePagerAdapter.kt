@@ -1,9 +1,8 @@
 package au.com.foxtask.coroutineexperimental
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,22 @@ import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import au.com.foxtask.coroutineexperimental.models.CataloguePageEntityWrapper
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.layout_catalogue_page.view.*
-import java.lang.Exception
 
 
 class CataloguePagerAdapter(private val context: Context) : PagerAdapter() {
     private val picasso = Picasso.get()
     private var cataloguePageList: MutableList<CataloguePageEntityWrapper> = arrayListOf()
+    private val handler = Handler()
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(context)
-        val layout = inflater.inflate(R.layout.layout_catalogue_page, container, false) as ViewGroup
-        container.addView(layout)
-        return cataloguePageList[position].apply {
+        var layout = container.getChildAt(position)
+        if (layout == null) {
+            layout = inflater.inflate(R.layout.layout_catalogue_page, container, false) as ViewGroup
+            container.addView(layout)
+        }
+        cataloguePageList[position].apply {
             layout.tag = this
             layout.catalogue_view.addClickableAreas(
                 item.pageItems.filter {
@@ -35,8 +36,21 @@ class CataloguePagerAdapter(private val context: Context) : PagerAdapter() {
                 item.pageImageWidth.toFloat(),
                 item.pageImageHeight.toFloat()
             )
-            picasso.load(item.pageImageLink).tag(item.pageImageLink).into(layout.catalogue_view.getChildAt(0) as ImageView)
+            layout.page_index_text_view.text = position.toString()
+            layout.page_index_text_view.visibility = View.VISIBLE
+            layout.catalogue_view_layout.visibility = View.GONE
+            handler.postAtTime(
+                {
+                    picasso.load(item.pageImageLink).tag(item.pageImageLink)
+                        .into(layout.catalogue_view.getChildAt(0) as ImageView)
+                    layout.page_index_text_view.visibility = View.GONE
+                    layout.catalogue_view_layout.visibility = View.VISIBLE
+                },
+                position,
+                SystemClock.uptimeMillis() + 1000
+            )
         }
+        return cataloguePageList[position]
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -48,6 +62,7 @@ class CataloguePagerAdapter(private val context: Context) : PagerAdapter() {
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        handler.removeCallbacksAndMessages(position)
         picasso.cancelTag((`object` as CataloguePageEntityWrapper).item.pageImageLink)
     }
 

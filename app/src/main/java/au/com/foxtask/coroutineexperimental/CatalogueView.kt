@@ -3,7 +3,6 @@ package au.com.foxtask.coroutineexperimental
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -19,7 +18,6 @@ class CatalogueView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var widthSize = MeasureSpec.getSize(widthMeasureSpec)
         var heightSize = MeasureSpec.getSize(heightMeasureSpec)
-        Log.d(CatalogueView::class.java.simpleName, "$widthSize, $heightSize")
         if (originHeight == 0f || originWidth == 0f || widthSize == 0 || heightSize == 0) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         } else {
